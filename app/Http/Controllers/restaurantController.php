@@ -4,16 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class restaurant extends Controller
+use App\Restaurant;
+
+class restaurantController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+    
     public function index()
     {
         //
+        $Res = Restaurant::get();
+        return view('home', compact('Res'));
     }
 
     /**
@@ -46,6 +51,9 @@ class restaurant extends Controller
     public function show($id)
     {
         //
+    	$Res = Restaurant::find($id);
+    	// echo dd($Res);
+    	return view('home', compact('Res'));
     }
 
     /**
