@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Restaurants extends Migration
+class AddPicToRestaurants extends Migration
 {
     /**
      * Run the migrations.
@@ -14,13 +14,8 @@ class Restaurants extends Migration
     public function up()
     {
         //
-        Schema::create('restaurants', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->integer('phone')->unique();
-            $table->string('district');
-            $table->string('shortDes');
-            $table->string('tg');
+        Schema::table('restaurants', function($table){
+            $table->string('pic')->default('default.jpg');
         });
     }
 

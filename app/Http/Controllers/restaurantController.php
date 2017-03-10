@@ -13,7 +13,7 @@ class restaurantController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    
+
     public function index()
     {
         //
@@ -29,6 +29,7 @@ class restaurantController extends Controller
     public function create()
     {
         //
+        return view('addRestaurant');
     }
 
     /**
@@ -40,6 +41,22 @@ class restaurantController extends Controller
     public function store(Request $request)
     {
         //
+
+        $newOb = new Restaurant;
+        if ($request->has('name'))
+        	$newOb->name = $request->input('name');
+
+
+        if ($request->has('address'))
+        	$newOb->address = $request->input('address');
+        if ($request->has('phone'))
+        	$newOb->phone = $request->input('phone');
+
+        if ($request->has('tag'))
+        	$newOb->tag = $request->input('tag');
+
+        $newOb->save();
+        return redirect('/home');
     }
 
     /**
@@ -52,8 +69,7 @@ class restaurantController extends Controller
     {
         //
     	$Res = Restaurant::find($id);
-    	// echo dd($Res);
-    	return view('home', compact('Res'));
+    	return view('details', compact('Res'));
     }
 
     /**

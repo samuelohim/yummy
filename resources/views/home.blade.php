@@ -4,18 +4,22 @@
 
 
 
-	<table class="table-striped table-hover">
-		@foreach ($Res as $res)
+	<div class="container-fluid" >
+		<table class="table-striped table-hover" style = 'width: 100%;'>
+			@foreach ($Res as $res)
 
-			<tr>
-				<td>{{$res->name}}</td>
-				<td>{{$res->shortDes}}
-					<tr><td></td><td>{{$res->address}}</td></tr>
-					<tr><td></td><td>{{$res->phone}}</td></tr>
-				</td>
-				<td>{{$res->tag}}</td>
-			</tr>
-		@endforeach
-	</table>
+				<tr>
+					<td>
+						<a href="home/{{$res->id}}"><img src="{{ asset('images/'.$res->pic) }}" alt="" style = 'width: 500px;  height: 388px;'/></a>
+					</td>
+					<td><b>{{$res->name}}</b> - {{$res->shortDes}}
+						<br>{{$res->address}}
+						<br>{{$res->phone}}
+					</td>
+					<td>{{$res->tag}}</td>
+				</tr>
+			@endforeach
+		</table>
+	</div>
 	
 @endsection
